@@ -1,0 +1,36 @@
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{{ vehicle.description }}</title>
+</head>
+
+<body>
+
+<h1>{{ vehicle.description }}</h1>
+
+<h3>Vin: {{vehicle.vin }}</h3>
+
+<ul>Make: {{ vehicle.brand }}</ul>
+<ul>Year: {{ vehicle.year }}</ul>
+<ul>Mileage: {{ vehicle.miles }}</ul>
+<ul>Exterior: {{ vehicle.exterior }}</ul>
+<ul>Interior: {{ vehicle.interior }}</ul>
+<ul>Transmission: {{ vehicle.transmission }}</ul>
+<ul>Options: {{vehicle.options }}</ul>
+<ul>Retail Price: {{ vehicle.retail }} </ul>
+<ul>Invoice Price: {{ vehicle.invoice }} </ul>
+<ul>Days in stock: {{ vehicle.days_in_stock }} </ul>
+<ul>Details: {{ vehicle.detail }} </ul>
+
+<ul>Sales Person: {{ vehicle.salesperson }} </ul>
+<ul><br></br></ul>
+
+<form action="{% url 'mark_sold_by_me' vehicle.id %}" method="post">
+  {% csrf_token %}
+<input type="submit" value="Sold by me">
+</form>
+
+</body>
+
+
+
+

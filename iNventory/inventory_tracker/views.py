@@ -16,3 +16,9 @@ def detail(request, vehicle_id):
     vehicle = get_object_or_404(Vehicle, pk=vehicle_id)
     return render(request, 'inventory_tracker/detail.html', {
             'vehicle': vehicle})
+
+def mark_sold_by_me(request, vehicle_id):
+    vehicle = get_object_or_404(Vehicle, pk=vehicle_id)
+    vehicle.salesperson = request.user
+    vehicle.save()
+    return detail(request, vehicle_id)
