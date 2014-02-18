@@ -73,29 +73,33 @@ class Vehicle(models.Model):
                                       choices=TYPE,
                                       default='NEW',
                                       db_index=True)
-    year = models.IntegerField(db_index=True)
-    brand = models.CharField(max_length=64, default="BMW")
-    model = models.CharField(max_length=64, db_index=True)
+    year = models.IntegerField('Model Year', db_index=True)
+    brand = models.CharField('Brand', max_length=64, default="BMW")
+    model = models.CharField('Model', max_length=64, db_index=True)
     vin = models.CharField('VIN', max_length=64, db_index=True, unique=True)
-    serial = models.CharField(max_length=64, db_index=True)
-    stock = models.CharField(max_length=64, db_index=True)
-    exterior = models.CharField(max_length=64, db_index=True)
-    interior = models.CharField(max_length=64, db_index=True)
-    transmission = models.CharField(max_length=64, 
+    serial = models.CharField('Serial#', max_length=64, db_index=True)
+    stock = models.CharField('Stock#', max_length=64, db_index=True)
+    exterior = models.CharField('Exterior Color', max_length=64, db_index=True)
+    interior = models.CharField('Interior Color', max_length=64, db_index=True)
+    transmission = models.CharField('Transmission Type',
+                                    max_length=64, 
                                     choices=TRANSMISSION,
                                     default='A',
                                     db_index=True)
-    options = ListField(max_length=10000)
+    options = ListField('Options', max_length=10000)
     miles = models.IntegerField('Milage', db_index=True)
-    retail = models.DecimalField(max_digits=10, 
+    retail = models.DecimalField('Retail Price',
+                                 max_digits=10, 
                                  decimal_places=2,db_index=True)
-    invoice = models.DecimalField(max_digits=10, 
+    invoice = models.DecimalField('Invoice Price',
+                                  max_digits=10, 
                                   decimal_places=2,
                                   blank=True,
                                   null=True,
                                   db_index=True)
-    in_date = models.DateField(db_index=True)
-    detail = models.CharField(max_length=1000000, 
+    in_date = models.DateField('In Date', db_index=True)
+    detail = models.CharField('Detail',
+                              max_length=1000000, 
                               blank=True,
                               null=True)
     
