@@ -1,9 +1,9 @@
-{% if all_objects %}
+{% if all_vehicles_list %}
     <ul>
-    {% for vehicle in all_objects %}
-        <li>{{ vehicle }}</li>
+    {% for vehicle in all_vehicles_list %}
+        <li><a href="/vehicles/{{ vehicle.id }}/">{{ vehicle }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
-    <p>No are available.</p>
+    <p>No vehicle are available.</p>
 {% endif %}
