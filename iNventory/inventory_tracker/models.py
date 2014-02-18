@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 import ast, re
 
 def list_to_str(l):
@@ -38,7 +39,7 @@ class ListField(models.TextField):
         return self.get_db_prep_value(value)
 
 
-class SalesPerson(models.Model):
+class SalesPerson(User):
     name = models.CharField(max_length=200)
 
 class Vehicle(models.Model):
@@ -60,7 +61,7 @@ class Vehicle(models.Model):
         )
     
 
-    salesperson = models.ForeignKey(SalesPerson, 
+    salesperson = models.ForeignKey(User, 
                                     blank=True, 
                                     null=True,
                                     db_index=True)
