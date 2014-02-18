@@ -1,0 +1,9 @@
+{% if all_objects %}
+    <ul>
+    {% for vehicle in all_objects %}
+        <li>{{ vehicle }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No are available.</p>
+{% endif %}
