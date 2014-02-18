@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 import ast, re
+from django.utils import timezone
 
 def list_to_str(l):
 
@@ -113,3 +114,6 @@ class Vehicle(models.Model):
 
     def configuration(self):    
         return self.exterior + '/' + self.interior + '/' + list_to_str(self.options)
+
+    def days_in_stock(self):
+        return (timezone.now().date() - self.in_date).days

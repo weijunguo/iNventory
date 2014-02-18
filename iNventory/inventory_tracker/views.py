@@ -11,3 +11,8 @@ def index(request):
             'all_vehicles_list': all_vehicles_list,
             })
     return HttpResponse(template.render(context))
+
+def detail(request, vehicle_id):
+    vehicle = get_object_or_404(Vehicle, pk=vehicle_id)
+    return render(request, 'inventory_tracker/detail.html', {
+            'vehicle': vehicle})
